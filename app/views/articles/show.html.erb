@@ -11,3 +11,25 @@
     %>
   </li>
 </ul>
+
+<h2>Comment: </h2>
+<% @article.comments.each do |comment| %>
+  <div>
+    <%= comment.commenter %>: <%= comment.body %>
+  </div>
+<% end %>
+
+<h2>Add a comment: </h2>
+<%= form_with model: [@article, @article.comments.build] do |form|%>
+  <p>
+    <%= form.label :commenter %>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body %>
+    <%= form.text_field :body %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
