@@ -1,3 +1,5 @@
 class GoodsController < ApplicationController
-  def index; end
+  def index
+    @goods = Good.all
+  end
 end

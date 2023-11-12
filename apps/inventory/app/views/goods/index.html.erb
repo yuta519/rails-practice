@@ -1,1 +1,10 @@
-<h1>Hello World</h1>
+<h1>Invetory Management App</h1>
+
+<h3>Your Current Goods</h3>
+<ul>
+  <% @goods.each do |good| %>
+    <div>
+      <%= good.name %>
+    </div>
+  <% end %>
+</ul>
