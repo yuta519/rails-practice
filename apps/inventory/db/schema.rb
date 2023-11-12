@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_12_200554) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_12_201911) do
+  create_table "goods", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "place"
+    t.integer "quantity"
+    t.integer "owner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_goods_on_owner_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "goods", "users", column: "owner_id"
 end
