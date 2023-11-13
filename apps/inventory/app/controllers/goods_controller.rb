@@ -27,7 +27,7 @@ class GoodsController < ApplicationController
   def destroy
     @good = Good.find(params[:id])
     if @good.destroy
-      redirect_to goods_path
+      redirect_to goods_path, status: :see_other
     else
       render @good, status: :unprocessable_entity
     end
