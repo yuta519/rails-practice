@@ -24,6 +24,15 @@ class GoodsController < ApplicationController
     end
   end
 
+  def destroy
+    @good = Good.find(params[:id])
+    if @good.destroy
+      redirect_to goods_path
+    else
+      render @good, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def good_params
