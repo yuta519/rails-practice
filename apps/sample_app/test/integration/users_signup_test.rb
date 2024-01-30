@@ -35,5 +35,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_not flash.empty?
     assert_equal 'Welcome to the Sample App!', flash[:success]
     assert_select 'h1', 'Example User'
+    assert is_logged_in?
   end
 end
