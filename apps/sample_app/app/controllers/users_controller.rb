@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i[edit update]
 
   def index
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
 
   def show
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id: params[:id])
 
     if @user.update(user_params)
       flash[:success] = 'Profile updated'
